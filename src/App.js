@@ -3,10 +3,16 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [resourceType, setResourceType] = useState("posts");
 
-  // how useEffect work is everytime we render this component/function, everything in useEffect will be run. This tend to be dangerous due to continuous render. we do't want to get this so we put [] after a function inside useEffect. when something inside the [], it means that this variable inside [] will triger useEffect to be run.
-  useEffect(()=> {
-    console.log('render')
-  }, [resourceType])
+  // everytime we click a button, 'render' is in console, but if we click post button we can't get 'render' is consoled even though we clicked it again and again(more than once). this is strange. it used to be consoled 'render' everytime post button is clicked. I can show this by change the text
+
+  // this is because function inside the useEffect will be run if only resourceType is change. when we click post button twice, resourceType is not changed. so thats why.
+
+  // explore it further by removing resourceType inside []
+  console.log("render");
+
+  useEffect(() => {
+    console.log("resource type changed");
+  }, []);
 
   return (
     <div className="App-container">
@@ -21,4 +27,3 @@ function App() {
 }
 
 export default App;
-
