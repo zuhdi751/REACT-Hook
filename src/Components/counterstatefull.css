@@ -1,0 +1,8 @@
+.statefull-container {
+    background-color: lightblue;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 30px;
+    flex: 2fr;
+    text-align: center;
+}

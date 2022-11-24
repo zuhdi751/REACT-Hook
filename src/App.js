@@ -1,26 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
+import CounterHook from "./Components/CounterHook";
+import CounterState from "./Components/CounterStatefull";
 
 function App() {
-  const [count, setCount] = useState(4);
-  const [theme, setTheme] = useState('blue')
-
-  function decrementCount() {
-    setCount((prevCount) => prevCount - 1);
-    setTheme('red')
-  }
-
-  function incrementCount() {
-    setCount((prevCount) => prevCount + 1);
-    setTheme('green')
-  }
-
   return (
     <div className="App-container">
-      <div>React Hook</div>
-      <button onClick={decrementCount}>-</button>
-      <span>{count} {theme}</span>
-      <button onClick={incrementCount}>+</button>
+      <CounterHook />
+      <CounterState />
     </div>
   );
 }
