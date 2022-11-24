@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [resourceType, setResourceType] = useState("posts");
+  // show the api into web by using items
+  const [items, setItems] = useState([])
 
   // everytime we click a button, 'render' is in console, but if we click post button we can't get 'render' is consoled even though we clicked it again and again(more than once). this is strange. it used to be consoled 'render' everytime post button is clicked. I can show this by change the text
 
@@ -15,7 +17,7 @@ function App() {
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => setItems(json))
   }, [resourceType]);
 
   return (
@@ -26,6 +28,12 @@ function App() {
         <button onClick={() => setResourceType("comments")}>Comments</button>
       </div>
       <h1>{resourceType}</h1>
+
+      <p>{items.map((item) => {
+        return <pre>{JSON.stringify(item)}</pre>
+      })}</p>
+
+
     </div>
   );
 }
