@@ -8,10 +8,11 @@ function App() {
   // this is because function inside the useEffect will be run if only resourceType is change. when we click post button twice, resourceType is not changed. so thats why.
 
   // explore it further by removing resourceType inside []
+  // when [] is empty, those callback function('unmount') doesn't work because empty array never actually changes between different renders.
   console.log("render");
 
   useEffect(() => {
-    console.log("resource type changed");
+    console.log("unmount");
   }, []);
 
   return (
