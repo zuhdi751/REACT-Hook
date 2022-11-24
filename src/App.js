@@ -9,11 +9,14 @@ function App() {
 
   // explore it further by removing resourceType inside []
   // when [] is empty, those callback function('unmount') doesn't work because empty array never actually changes between different renders.
-  console.log("render");
 
+  // practice useEffect by fetchin data from 'jsonplaceholder.typecode.com/posts/'
+  
   useEffect(() => {
-    console.log("unmount");
-  }, []);
+    fetch(`https://jsonplaceholder.typicode.com/${resourceType}`)
+      .then(response => response.json())
+      .then(json => console.log(json))
+  }, [resourceType]);
 
   return (
     <div className="App-container">
